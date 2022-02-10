@@ -1,4 +1,7 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
+ARG DISTRO=bionic
+ARG ROS_VER=melodic
+
+FROM dorowu/ubuntu-desktop-lxde-vnc:${DISTRO}
 
 # install packages
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
@@ -7,7 +10,7 @@ RUN apt-get update && apt-get install -q -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # setup sources.list
-RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
+RUN echo "deb http://packages.ros.org/ros/ubuntu ${DISTRO} main" > /etc/apt/sources.list.d/ros1-latest.list
 
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -16,11 +19,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-ENV ROS_DISTRO melodic
+ENV ROS_DISTRO ${ROS_VER}
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-ros-core=1.4.1-0* \
+    ros-${ROS_DISTRO}-ros-core=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 # setup entrypoint
@@ -42,19 +45,19 @@ RUN rosdep init && \
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-ros-base=1.4.1-0* \
+    ros-${ROS_DISTRO}-ros-base=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-robot=1.4.1-0* \
+    ros-${ROS_DISTRO}-robot=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-desktop=1.4.1-0* \
+    ros-${ROS_DISTRO}-desktop=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-desktop-full=1.4.1-0* \
+    ros-${ROS_DISTRO}-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 # ENV USER ubuntu
