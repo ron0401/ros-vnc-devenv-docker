@@ -1,5 +1,7 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 
+LABEL ron0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
+
 # install packages
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
