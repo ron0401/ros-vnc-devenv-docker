@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file melodic/Dockerfile --tag ros-vnc:melodic
-        docker build . --file noetic/Dockerfile --tag ros-vnc:noetic
+        # docker build . --file noetic/Dockerfile --tag ros-vnc:noetic
