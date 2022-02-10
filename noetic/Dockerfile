@@ -1,7 +1,4 @@
-ARG DISTRO=bionic
-ARG ROS_VER=melodic
-
-FROM dorowu/ubuntu-desktop-lxde-vnc:${DISTRO}
+FROM dorowu/ubuntu-desktop-lxde-vnc:focal
 
 # install packages
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
@@ -10,7 +7,7 @@ RUN apt-get update && apt-get install -q -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # setup sources.list
-RUN /bin/bash -c echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
+RUN /bin/bash -c echo "deb http://packages.ros.org/ros/ubuntu focal main" > /etc/apt/sources.list.d/ros1-latest.list
 
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -19,11 +16,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-ENV ROS_DISTRO ${ROS_VER}
+ENV ROS_DISTRO noetic
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-ros-core=1.4.1-0* \
+    ros-noetic-ros-core=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 # setup entrypoint
@@ -41,23 +38,23 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # bootstrap rosdep
 RUN rosdep init && \
-  rosdep update --rosdistro melodic
+  rosdep update --rosdistro noetic
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-ros-base=1.4.1-0* \
+    ros-noetic-ros-base=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-robot=1.4.1-0* \
+    ros-noetic-robot=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-desktop=1.4.1-0* \
+    ros-noetic-desktop=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-melodic-desktop-full=1.4.1-0* \
+    ros-noetic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 # ENV USER ubuntu

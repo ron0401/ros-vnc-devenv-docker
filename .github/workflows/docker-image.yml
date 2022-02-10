@@ -16,5 +16,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --build-arg DISTRO=bionic --build-arg ROS_VER=melodic --tag ros-vnc:melodic
-        docker build . --file Dockerfile --build-arg DISTRO=focal --build-arg ROS_VER=noetic --tag ros-vnc:noetic
+        docker build . --file melodic/Dockerfile --tag ros-vnc:melodic
+        docker build . --file noetic/Dockerfile --tag ros-vnc:noetic
