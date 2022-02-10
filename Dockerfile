@@ -41,23 +41,23 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # bootstrap rosdep
 RUN rosdep init && \
-  rosdep update --rosdistro $ROS_DISTRO
+  rosdep update --rosdistro ${ROS_VER}
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-${ROS_DISTRO}-ros-base=1.4.1-0* \
+    ros-${ROS_VER}-ros-base=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-${ROS_DISTRO}-robot=1.4.1-0* \
+    ros-${ROS_VER}-robot=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-${ROS_DISTRO}-desktop=1.4.1-0* \
+    ros-${ROS_VER}-desktop=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-${ROS_DISTRO}-desktop-full=1.4.1-0* \
+    ros-${ROS_VER}-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
 # ENV USER ubuntu
