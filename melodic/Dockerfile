@@ -64,3 +64,4 @@ RUN useradd --create-home --home-dir /home/ubuntu --shell /bin/bash --user-group
     echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENV USER ubuntu
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
