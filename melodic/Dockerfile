@@ -25,11 +25,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # setup entrypoint
-COPY ./ros_entrypoint.sh /
-RUN chmod 777 /ros_entrypoint.sh
+# COPY ./ros_entrypoint.sh /
+# RUN chmod 777 /ros_entrypoint.sh
 
-ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["bash"]
+# ENTRYPOINT ["/ros_entrypoint.sh"]
+# CMD ["bash"]
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
