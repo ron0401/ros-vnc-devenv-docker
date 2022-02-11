@@ -58,4 +58,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
-# ENV USER ubuntu
+RUN useradd --create-home --home-dir /home/ubuntu --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
+    echo ubuntu:ubuntu | chpasswd && \
+    echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+ENV USER ubuntu
