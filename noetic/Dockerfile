@@ -51,4 +51,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-noetic-desktop-full=1.5.0-1* \
     && rm -rf /var/lib/apt/lists/*
 
-# ENV USER ubuntu
+ENV USER ubuntu
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
