@@ -24,13 +24,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-ros-core=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
-# setup entrypoint
-# COPY ./ros_entrypoint.sh /
-# RUN chmod 777 /ros_entrypoint.sh
-
-# ENTRYPOINT ["/ros_entrypoint.sh"]
-# CMD ["bash"]
-
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     python-rosdep \
