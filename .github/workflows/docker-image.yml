@@ -33,5 +33,5 @@ jobs:
         with:
           context: ./melodic
           push: true
-          tags: ron0401/ros-vnc-devenv:melodic
-          labels: ron0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
+          tags: ronkabu0401/ros-vnc-devenv:melodic
+          labels: ronkabu0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
