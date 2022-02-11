@@ -1,5 +1,5 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
-
+# FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
+FROM ubuntu:20.04
 LABEL ron0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
 
 # install packages
