@@ -1,8 +1,6 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -26,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./melodic
-          push: true
+          push: false
           tags: ronkabu0401/ros-vnc-devenv:melodic
           labels: ronkabu0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
       
@@ -34,6 +32,14 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./noetic
-          push: true
+          push: false
           tags: ronkabu0401/ros-vnc-devenv:noetic
+          labels: ronkabu0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
+
+      - name: Build and push Docker image kinetic
+        uses: docker/build-push-action@v2
+        with:
+          context: ./kinetic
+          push: false
+          tags: ronkabu0401/ros-vnc-devenv:kinetic
           labels: ronkabu0401.ros.vnc.devenv.docker.source=https://github.com/ron0401/ros-vnc-devenv-docker.git
