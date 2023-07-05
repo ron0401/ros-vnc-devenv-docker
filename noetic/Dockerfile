@@ -99,6 +99,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-noetic-desktop-full \
     && rm -rf /var/lib/apt/lists/*
 
+RUN wget https://github.com/foxglove/studio/releases/download/v1.60.0/foxglove-studio-1.60.0-linux-amd64.deb -O foxglove.deb && apt install -y ./foxglove.deb 
+
 ENV USER ubuntu
 ENV PASSWD ubuntu
 
