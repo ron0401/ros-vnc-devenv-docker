@@ -101,4 +101,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV USER ubuntu
 ENV PASSWD ubuntu
+
+COPY ./entrypoint.sh /
+ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
+
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
